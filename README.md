@@ -140,10 +140,14 @@ Status: Deterministic cleaning is complete. The dataset is structurally sound an
 
 <img width="685" height="698" alt="image" src="https://github.com/user-attachments/assets/42bc55f4-2da2-40ad-b918-2b31328cb320" />
 
+<img width="873" height="608" alt="image" src="https://github.com/user-attachments/assets/86eca7b2-be34-4ec7-88a8-9ca62230f7d9" />
 
 
+# Precaution 
+<img width="933" height="543" alt="image" src="https://github.com/user-attachments/assets/6d8a5d3f-d1ab-4ef2-8568-484519afc9ff" />
 
 
+<img width="651" height="213" alt="image" src="https://github.com/user-attachments/assets/12d000d6-30a1-4d71-b7c1-7daac8b3af3d" />
 
 
 
