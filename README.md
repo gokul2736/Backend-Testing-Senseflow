@@ -225,9 +225,6 @@ print(df['text'].apply(lambda x: len(str(x))).describe())
 
 
 
-
-
-
 ## SenseFlow Data Preprocessing Report
 ### 1. Initial State of the Data
 Input File: processed_data (1).csv
@@ -238,6 +235,7 @@ Condition: Partially labeled (0 = Safe, 1 = Phishing) but contained heavy web no
 
 <img width="387" height="534" alt="image" src="https://github.com/user-attachments/assets/e24dc6cf-d12d-4779-9404-21188d09e326" />
 
+<img width="560" height="141" alt="image" src="https://github.com/user-attachments/assets/21794144-0a82-4777-b80d-2a90f0d574ab" />
 
 
 
