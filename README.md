@@ -441,3 +441,38 @@ print("\n--- STEP 5: FINAL DATASET ANALYSIS ---")
 print("Average text length:")
 print(final_df['text'].apply(len).describe())
 ```
+
+
+
+
+
+
+
+```
+
+The SenseFlow Presentation Flow
+1. The Starting Point (Phase 1: Data Ingestion)
+
+What you show: The Phase 1 slide.
+
+What you say: "To train DistilBERT effectively, we needed a diverse dataset. For Phase 1, we built an automated ingestion pipeline that aggregated multiple distinct threat-intelligence feeds into a single, unified Data Lake, giving us an initial raw dataset of over 16,500 emails."
+
+2. The Cleanup (Phase 2a: Deep Sanitization)
+
+What you show: The Phase 2a slide (HTML/Regex cleaning).
+
+What you say: "Raw data is too noisy for machine learning. In Phase 2a, we applied deterministic regex filtering to strip out HTML artifacts and URLs. Crucially, we preserved high-signal symbols like '$' and '@' which are strong indicators of phishing intent. We also purged exact duplicates to prevent the model from memorizing repetitive data."
+
+3. The Climax (Phase 2b: Hardware Protection)
+
+What you show: The Phase 2b slide (The < 50000 filter).
+
+What you say: "This is where we caught a critical infrastructure risk. During our Exploratory Data Analysis, we discovered a fatal anomaly: a single corrupted record containing 4.29 million characters. If passed to the Hugging Face tokenizer, this would have instantly caused a Colab T4 GPU Out-Of-Memory crash. To guarantee hardware stability, we engineered a Phase 2b automated gatekeeper that permanently purges any sequence over 50,000 characters."
+
+4. The Proof (Final Analytics Report)
+
+What you show: The screenshot of your final analytics (the 16,135 rows, the max length of 46,332).
+
+What you say: "Here is the validation of our pipeline. We successfully reduced the maximum sequence length to a safe 46,000 characters, leaving us with a pristine dataset of exactly 16,135 samples. The class balance is roughly 71% phishing to 28% safe, which accurately mirrors real-world threat environments where spam heavily outweighs legitimate mail."
+
+```
