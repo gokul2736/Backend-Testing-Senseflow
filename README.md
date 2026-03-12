@@ -238,6 +238,11 @@ Condition: Partially labeled (0 = Safe, 1 = Phishing) but contained heavy web no
 <img width="560" height="141" alt="image" src="https://github.com/user-attachments/assets/21794144-0a82-4777-b80d-2a90f0d574ab" />
 
 
+<img width="448" height="99" alt="image" src="https://github.com/user-attachments/assets/745243cb-3a76-4668-a82d-5d62636da68d" />
+
+
+
+
 
 
 ## 2. Challenges Faced & Solutions
