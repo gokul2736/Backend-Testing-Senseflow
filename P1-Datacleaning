@@ -1,0 +1,58 @@
+import pandas as pd
+import re
+import os
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
+
+def build_dynamic_cloud_data_lake():
+    print("--- SenseFlow: Initiating Dynamic Cloud Data Pipeline ---")
+    dfs = []
+
+    # Colab default upload directory is the current working directory ('.')
+    for file in os.listdir('.'):
+        try:
+            if file.endswith('.csv'):
+                df = pd.read_csv(file)
+            elif file.endswith(('.xls', '.xlsx')):
+                df = pd.read_excel(file, engine='openpyxl')
+            else:
+                continue # Skip folders or other file types
+
+            # Auto-detect columns
+            text_col = 'body' if 'body' in df.columns else 'content' if 'content' in df.columns else 'text' if 'text' in df.columns else None
+            label_col = 'label' if 'label' in df.columns else 'Class' if 'Class' in df.columns else None
+
+            if text_col and label_col:
+                temp_df = df[[text_col, label_col]].rename(columns={text_col: 'text', label_col: 'label'})
+                dfs.append(temp_df)
+                print(f"✅ Successfully ingested: {file}")
+            else:
+                print(f"⚠️ Skipped {file}: Could not find 'body/content' and 'label' columns.")
+        except Exception as e:
+            print(f"❌ Error loading {file}: {e}")
+
+    if not dfs:
+        print("CRITICAL ERROR: No valid data found to merge.")
+        return
+
+    print("\nMerging datasets and purging duplicates...")
+    master_df = pd.concat(dfs, ignore_index=True).drop_duplicates().dropna()
+
+    def sanitize_text(text):
+        text = str(text).lower()
+        text = re.sub(r'<.*?>', '', text)
+        text = re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', '[EMAIL]', text)
+        text = re.sub(r'http\S+', '[URL]', text)
+        text = re.sub(r'[^a-z0-9\s]', '', text)
+        return text.strip()
+
+    print(f"Sanitizing {len(master_df)} emails... (Please wait)")
+    master_df['clean_text'] = master_df['text'].apply(sanitize_text)
+    master_df['label'] = pd.to_numeric(master_df['label'], errors='coerce').fillna(0).astype(int)
+
+    output_path = 'processed_data.csv'
+    master_df[['clean_text', 'label']].to_csv(output_path, index=False)
+    print(f"\n🎉 SUCCESS! Final Data Lake generated: {output_path}")
+    print(f"Total Unique Training Samples: {len(master_df)}")
+
+build_dynamic_cloud_data_lake()
