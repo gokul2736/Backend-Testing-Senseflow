@@ -233,10 +233,9 @@ Condition: Partially labeled (0 = Safe, 1 = Phishing) but contained heavy web no
 
 
 
-<img width="387" height="534" alt="image" src="https://github.com/user-attachments/assets/e24dc6cf-d12d-4779-9404-21188d09e326" />
+<img width="387" height="534" alt="image" src="https://github.com/user-attachments/assets/e24dc6cf-d12d-4779-9404-21188d09e326" />  
 
-<img width="560" height="141" alt="image" src="https://github.com/user-attachments/assets/21794144-0a82-4777-b80d-2a90f0d574ab" />
-
+<img width="560" height="141" alt="image" src="https://github.com/user-attachments/assets/21794144-0a82-4777-b80d-2a90f0d574ab" />  
 
 <img width="448" height="99" alt="image" src="https://github.com/user-attachments/assets/745243cb-3a76-4668-a82d-5d62636da68d" />
 
@@ -272,6 +271,7 @@ How we fixed it: We applied a strict length filter ```df[df['text'].apply(lambda
 
 
 
+<img width="448" height="99" alt="image" src="https://github.com/user-attachments/assets/745243cb-3a76-4668-a82d-5d62636da68d" />
 
 
 
@@ -300,11 +300,7 @@ df.to_csv('senseflow_ready_for_ai.csv', index=False)
 
 print("✅ Monster emails destroyed. Data is officially ready for training.")
 ```
-
-<img width="830" height="286" alt="image" src="https://github.com/user-attachments/assets/8383299f-c32f-4e5a-9282-29583dd1b873" />
-
-<img width="784" height="564" alt="image" src="https://github.com/user-attachments/assets/dcf20c17-acb3-4338-885f-6a0cbaa80e74" />
-<img width="874" height="373" alt="image" src="https://github.com/user-attachments/assets/fb4c27a5-f0f4-4112-9af1-e8821ae66f94" />
+```
 
 SenseFlow Data Preprocessing Report
 1. Initial State of the Data
@@ -344,7 +340,7 @@ Class Distribution: 11,523 Phishing (1) | 4,612 Safe (0).
 Text Length Stats: The max length dropped from 4.2 million characters down to a safe 46,332 characters. The average email is now 1,274 characters long, which is the perfect sweet spot for phishing detection.
 
 Status: Deterministic cleaning is complete. The dataset is structurally sound and ready for Hugging Face tokenization and DistilBERT fine-tuning
-
+```
 
 <img width="685" height="698" alt="image" src="https://github.com/user-attachments/assets/42bc55f4-2da2-40ad-b918-2b31328cb320" />
 
